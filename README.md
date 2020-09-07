@@ -80,6 +80,7 @@ Troubleshooting
 ---------------
 * If you have to relaunch the "controls" app, you need to restart "icsim" also, to sync the shared data.
 * If the GUI is blinking/glitching, move it away from any open windows and get the focus by clicking in it.
+* On the virtual machine, isotprecv and isotpsend commands are not working.
 
 ## lib.o not linking
 If lib.o doesn't link it's probably because it's the wrong arch for your platform.  To fix this you will
