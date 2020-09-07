@@ -1,7 +1,35 @@
-Instrument Cluster Simulator for SocketCAN
-------------------------------------------
+Barbhack 2020 - Car Hacking Workshop
+------------------------------------
 
+This software is a fork of "Instrument Cluster Simulator for SocketCAN" aka ICSim
 By: OpenGarages <agent.craig@gmail.com>
+URI : https://github.com/zombieCraig/ICSim
+
+It was made for the Car Hacking Workshop of the first edition of BARBHACK, the french southernmost hacking event. The purpose of this workshop is to teach some basics on CAN bus hacking (CAN Frame 101, OBDII/UDS/IsoTp protocols)
+
+It extends the basic ICSim with some specific features :
+* Some controls are not related to a CAN frame, to simulate sensors/actuators on ECU
+* A very basic diag tool is simulated to help understanding UDS protocol
+* A few OBD-II and UDS commands are supported
+* To learn with fun, a scoring system with few challenges has been implemented
+
+The PDF of the workshop is available here (FR) : https://raw.githubusercontent.com/phil-eqtech/CH-Workshop/master/media/BARBHACK%20-%20Car%20Hacking%20Workshop%20(FR).pdf
+
+![Main UI](https://raw.githubusercontent.com/phil-eqtech/CH-Workshop/master/media/interface.png)
+![Controls](https://raw.githubusercontent.com/phil-eqtech/CH-Workshop/master/media/controls.png)
+
+If you are not running on Linux or you don't want to compile the application, a virtual machine (1.1Gb) is available here : https://mega.nz/file/YbRylYBZ#KMW4zd3JmxnkbZCmlqBhkwpty-k6-tacLpci9MnZRms
+Login : barbhack - password : 12345678
+
+Challenges
+----------
+There is 6 challenges to resolve in order to score 100 points :
+- Blink the turn signals on the instrument cluster without activating the warning or turn commands (5 pts)
+- The speed is limited to 100Km/h. Can you move the needle on the speedometer above this limit ? (10 pts)
+- A sensor triggers the lights by night. Can you shut it ? (10 pts)
+- Can you get the VIN of the car ? (15 pts)
+- The diag tool run a "Routine Control" command. A second command is hidden, can you find it ? (30 pts)
+- Can you resolve the "Security Access" challenge of the 0x03 "Diagnostic Session Control" (30 pts)
 
 Compiling
 ---------
@@ -16,9 +44,17 @@ You can get can-utils from github or on Ubuntu you may run the follwoing
   sudo apt-get install libsdl2-dev libsdl2-image-dev can-utils  
 ```
 
-Testing on a virtual CAN interface
-----------------------------------
-You can run the following commands to setup a virtual can interface
+Default operation
+------------------
+
+You will need a virtual CAN interface to run this software.
+
+You can create it using the "setup_vcan.sh" as sudo
+```
+  sudo ./setup_vcan.sh
+```
+
+or type the following commands :
 
 ```
   sudo modprobe can
@@ -27,34 +63,23 @@ You can run the following commands to setup a virtual can interface
   sudo ip link set up vcan0
 ```
 
-If you type ifconfig vcan0 you should see a vcan0 interface. A setup_vcan.sh file has also been provided with this
-repo.
+If you type "ifconfig vcan0" or "ip link" you should see a vcan0 interface.
 
-Usage
------
-Default operations:
-
-Start the Instrument Cluster (IC) simulator:
-
-```
-  ./icsim vcan0
-```
-
-Then startup the controls
+Once the virtual CAN interface is up and running, type the two following commands in two different terminals :
 
 ```
   ./controls vcan0
 ```
-
-The hard coded defaults should be in sync and the controls should control the IC.  Ideally use a controller similar to
-an XBox controller to interact with the controls interface.  The controls app will generate corrosponding CAN packets
-based on the buttons you press.  The IC Sim sniffs the CAN and looks for relevant CAN packets that would change the
-display.
+and
+```
+  ./icsim vcan0
+```
+Each application can be closed by typing "Ctrl+c" in the terminal window.
 
 Troubleshooting
 ---------------
-* If you get an error about canplayer then you may not have can-utils properly installed and in your path.
-* If the controller does not seem to be responding make sure the controls window is selected and active
+* If you have to relaunch the "controls" app, you need to restart "icsim" also, to sync the shared data.
+* If the GUI is blinking/glitching, move it away from any open windows and get the focus by clicking in it.
 
 ## lib.o not linking
 If lib.o doesn't link it's probably because it's the wrong arch for your platform.  To fix this you will
@@ -70,33 +95,3 @@ or you could edit the Makefile and change the CFLAGS to point to wherever your
 distro installs the SDL.h header, ie: /usr/include/x86_64-linux-gnu/SDL2
 
 There was also a report that on Arch linux needed sdl2_gfx library.
-
-CAN Hacking Training Usage
---------------------------
-To *safely* train on CAN hacking you can play back a sample recording included in this repo of generic CAN traffic.  This will
-create something similar to normal CAN "noise".  Then start the IC Sim with the -r (randomize) switch.
-
-```
-  ./icsim -r vcan0
-  Using CAN interface vcan0
-  Seed: 1401717026
-```
-
-Now copy the seed number and paste it as the -s (seed) option for the controls.
-
-```
-  ./controls -s 1401717026 vcan0
-```
-
-This will randomize what CAN packets the IC needs and by passing the seed to the controls they will sync.  Randomizing
-changes the arbitration IDs as well as the byte position of the packets used.  This will give you experience in hunting down
-different types of CAN packets on the CAN Bus.
-
-For the most realistic training you can change the difficulty levels.  Set the difficulty to 2 with the controls:
-
-```
-  ./controls -s 1401717026 -l 2 vcan0
-```
-
-This will add additional randomization to the target packets, simulating other data stored in the same arbitration id.
-
