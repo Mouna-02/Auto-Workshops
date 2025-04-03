@@ -1,7 +1,8 @@
 # CAN bus hands-on
 
 To discover the CAN bus, this repo holds a fork of "Instrument Cluster Simulator for SocketCAN" aka **ICSim** : https://github.com/zombieCraig/ICSim
-The version used is tht of Quarkslab's workshop : https://github.com/phil-eqtech/CH-Workshop which extends the basic ICSim with some specific features :
+
+The version used is that of Quarkslab's workshop : https://github.com/phil-eqtech/CH-Workshop which extends the basic ICSim with some specific features :
 * Some controls are not related to a CAN frame, to simulate sensors/actuators on ECU
 * A very basic diag tool is simulated to help understanding UDS protocol
 * A few OBD-II and UDS commands are supported
