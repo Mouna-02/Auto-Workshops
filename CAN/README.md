@@ -1,18 +1,14 @@
 # CAN bus hands-on
 
 To discover the CAN bus, this repo holds a fork of "Instrument Cluster Simulator for SocketCAN" aka **ICSim** : https://github.com/zombieCraig/ICSim
-
-It extends the basic ICSim with some specific features :
+The version used is tht of Quarkslab's workshop : https://github.com/phil-eqtech/CH-Workshop which extends the basic ICSim with some specific features :
 * Some controls are not related to a CAN frame, to simulate sensors/actuators on ECU
 * A very basic diag tool is simulated to help understanding UDS protocol
 * A few OBD-II and UDS commands are supported
-* To learn with fun, a scoring system with few challenges has been implemented
 
 ![Main UI](https://raw.githubusercontent.com/phil-eqtech/CH-Workshop/master/media/interface.png)
 ![Controls](https://raw.githubusercontent.com/phil-eqtech/CH-Workshop/master/media/controls.png)
 
-If you are not running on Linux or you don't want to compile the application, a virtual machine (1.1Gb) is available here : https://mega.nz/file/YbRylYBZ#KMW4zd3JmxnkbZCmlqBhkwpty-k6-tacLpci9MnZRms
-Login : barbhack - password : 12345678
 
 ## Challenges
 
@@ -24,14 +20,20 @@ There are 6 challenges to resolve in order to score 100 points :
 - The diag tool run a "Routine Control" command. A second command is hidden, can you find it ? (30 pts)
 - Can you resolve the "Security Access" challenge of the 0x03 "Diagnostic Session Control" (30 pts)
 
+- Execute a Man-in-the-middle type of attack.
+- Execute a Spoofing type of attack.
+- Execute a Replay type of attack.
+
 ## Compiling
+
+Before this workshop, you were all asked to have a running Virtual Machine that is linux-based.
 
 You will need:
 * SDL2
 * SDL2_Image
 * can-utils
 
-You can get can-utils from github or on Ubuntu you may run the follwoing
+You can run the following:
 
 ```
   sudo apt-get install libsdl2-dev libsdl2-image-dev can-utils  
@@ -47,7 +49,7 @@ You can create it using the "setup_vcan.sh" as sudo
   sudo ./setup_vcan.sh
 ```
 
-or type the following commands :
+OR type the following commands :
 
 ```
   sudo modprobe can
@@ -56,7 +58,7 @@ or type the following commands :
   sudo ip link set up vcan0
 ```
 
-If you type "ifconfig vcan0" or "ip link" you should see a vcan0 interface.
+If you type "ifconfig vcan0" or "ip a" you should see a vcan0 interface.
 
 Once the virtual CAN interface is up and running, type the two following commands in two different terminals :
 
@@ -71,9 +73,8 @@ Each application can be closed by typing "Ctrl+c" in the terminal window.
 
 Troubleshooting
 ---------------
-* If you have to relaunch the "controls" app, you need to restart "icsim" also, to sync the shared data.
+* If you have to relaunch the "controls" app, you need to restart "icsim" also, to sync the shared data and transiting can packets.
 * If the GUI is blinking/glitching, move it away from any open windows and get the focus by clicking in it.
-* On the virtual machine, isotprecv and isotpsend commands are not working.
 
 ## lib.o not linking
 If lib.o doesn't link it's probably because it's the wrong arch for your platform.  To fix this you will
