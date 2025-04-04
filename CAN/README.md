@@ -22,8 +22,8 @@ There are 6 challenges to resolve in order to score 100 points :
 - Can you resolve the "Security Access" challenge of the 0x03 "Diagnostic Session Control" (30 pts)
 
 - Execute a Man-in-the-middle type of attack.
-- Execute a Spoofing type of attack.
 - Execute a Replay type of attack.
+- Execute a Spoofing type of attack.
 
 ## Compiling
 
