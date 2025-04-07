@@ -13,17 +13,13 @@ The version used is that of Quarkslab's workshop : https://github.com/phil-eqtec
 
 ## Challenges
 
-There are 6 challenges to resolve in order to score 100 points :
-- Blink the turn signals on the instrument cluster without activating the warning or turn commands (5 pts)
-- The speed is limited to 100Km/h. Can you move the needle on the speedometer above this limit ? (10 pts)
-- A sensor triggers the lights by night. Can you shut it ? (10 pts)
-- Can you get the VIN of the car ? (15 pts)
-- The diag tool run a "Routine Control" command. A second command is hidden, can you find it ? (30 pts)
-- Can you resolve the "Security Access" challenge of the 0x03 "Diagnostic Session Control" (30 pts)
+- Blink the turn signals on the instrument cluster without manually activating the warning or turn commands.
+- The speed is limited to 100Km/h. Can you move the needle on the speedometer above this limit ?
+- Can you get the VIN of the car ?
+- A sensor triggers the lights by night. Can you override it ?
+- The diag tool run a "Routine Control" command. A second command is hidden, can you find it ?
+- Can you resolve the "Security Access" challenge of the 0x03 "Diagnostic Session Control"?
 
-- Execute a Man-in-the-middle type of attack.
-- Execute a Replay type of attack.
-- Execute a Spoofing type of attack.
 
 ## Compiling
 
