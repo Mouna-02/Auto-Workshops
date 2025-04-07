@@ -24,4 +24,3 @@ It extends the basic ICSim with some specific features :
 
 ## Workshop 2 : ECU reverse engineering tips
 
-## Workshop 3 : TPMS signals
