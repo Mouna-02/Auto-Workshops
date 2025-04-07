@@ -6,8 +6,7 @@ These were adapted from the 2024 edition of [Barbhack](https://www.barbhack.fr),
 The purpose of this series of workshops is to teach some basics on automotive security :
 
 - Workshop 1 : an overview of the CAN bus from a security point of view.
-- Workshop 2 : Getting some entry tips on how to reverse an ECU
-- Workshop 3 : *Loading*
+- Workshop 2 : *Loading*
 
 ## Workshop 1 : CAN bus hands-on
 
@@ -22,5 +21,5 @@ It extends the basic ICSim with some specific features :
 ![Controls](https://raw.githubusercontent.com/phil-eqtech/CH-Workshop/master/media/controls.png)
 
 
-## Workshop 2 : ECU reverse engineering tips
+## Workshop 2 : *Loading*
 
