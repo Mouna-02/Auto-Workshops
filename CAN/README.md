@@ -17,8 +17,6 @@ The version used is that of Quarkslab's workshop : https://github.com/phil-eqtec
 - The speed is limited to 100Km/h. Can you move the needle on the speedometer above this limit ?
 - Can you get the VIN of the car ?
 - A sensor triggers the lights by night. Can you override it ?
-- The diag tool run a "Routine Control" command. A second command is hidden, can you find it ?
-- Can you resolve the "Security Access" challenge of the 0x03 "Diagnostic Session Control"?
 
 
 ## Compiling

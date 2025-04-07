@@ -94,6 +94,6 @@ char challengeValue[6] = {5, 10, 10, 15, 30, 30};
 
 
 #define DEBUG 0
-#define VIN "WBARBHACKFA149850"
+#define VIN "B-CAN-Workshop1"
 #define LIGHT_LEVEL 0x60
 #define ISOTP_TIMEOUT 600
