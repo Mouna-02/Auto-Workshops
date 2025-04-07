@@ -7,7 +7,7 @@ The purpose of this series of workshops is to teach some basics on automotive se
 
 - Workshop 1 : an overview of the CAN bus from a security point of view.
 - Workshop 2 : Getting some entry tips on how to reverse an ECU
-- Workshop 3 : Having fun with TPMS signals
+- Workshop 3 : *Loading*
 
 ## Workshop 1 : CAN bus hands-on
 
