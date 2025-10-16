@@ -32,3 +32,7 @@ The goal is to:
 * Understand the logic used to encrypt the original "highly_important.txt" file.
 * Reverse the logic to obtain a decrypted readable file from the provided "highly_important.enc" file.
 
+
+
+
+
